@@ -52,12 +52,22 @@ exports.view = function(req, res) {
 
 //UPDATE
 exports.update = function(req,res) {
-    Contact.findById(req.params.contact_id, function(err,contact) {
+    const name = req.body.name;
+    const email = req.body.email;
+    const gender = req.body.gender;
+    const phone = req.body.phone;
+    Contact.findByIdAndUpdate(req.params.contact_id, 
+        {
+            name: name, 
+            email: email, 
+            gender: gender, 
+            phone:phone
+        }, function(err,contact) {
         if(err) {
             res.json(err);
         }
         res.json({
-            message: "Contact  info updated",
+            message: "Contact info updated",
             data: contact
         });
     });
