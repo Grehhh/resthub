@@ -64,15 +64,15 @@ exports.update = function(req,res) {
 };
 
 //DELETE
-exports.delete = function(req,res) {
-    Contact.remove({ _id: req.params.contact_id }), function(err,contact) {
-        if(err) {
+exports.delete = function (req, res) {
+    Contact.remove({
+        _id: req.params.contact_id
+    }, function (err, contact) {
+        if (err)
             res.send(err);
-        }
-        res.json({
-            status: succeded,
-            message: "Contact deleted"
+    res.json({
+            status: "success",
+            message: 'Contact deleted'
         });
-    };
-
+    });
 };
